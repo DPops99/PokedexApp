@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PokedexApp">
         <activity android:name=".main.ui.FavoritesFragment"></activity>
-        <activity android:name=".main.ui.SettingsFragment" />
-        <activity android:name=".main.ui.SearchFragment" />
+        <activity android:name=".main.ui.settings.SettingsFragment" />
+        <activity android:name=".main.ui.search.SearchFragment" />
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

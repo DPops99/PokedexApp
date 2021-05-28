@@ -1,4 +1,4 @@
-package com.example.pokedexapp.main.ui
+package com.example.pokedexapp.main.ui.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.pokedexapp.databinding.FavoriteFragmentLayoutBinding
-import com.example.pokedexapp.databinding.SearchFragmentLayoutBinding
+
 
 class FavoriteFragment : Fragment() {
 
@@ -17,7 +17,7 @@ class FavoriteFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FavoriteFragmentLayoutBinding.inflate(inflater,container, false)
         val view = binding.root
 

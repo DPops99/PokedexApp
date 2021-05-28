@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.pokedexapp.R
 import com.example.pokedexapp.databinding.ActivityMainBinding
-import com.example.pokedexapp.main.ui.FavoriteFragment
-import com.example.pokedexapp.main.ui.SearchFragment
-import com.example.pokedexapp.main.ui.SettingsFragment
+import com.example.pokedexapp.main.ui.favorite.FavoriteFragment
+import com.example.pokedexapp.main.ui.search.SearchFragment
+import com.example.pokedexapp.main.ui.settings.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        setListeners();
+        setListeners()
     }
 
 
