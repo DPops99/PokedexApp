@@ -6,6 +6,8 @@ data class Pokemon (
     var height : Int,
     var abilities : List<PokemonAbility>,
     var stats : List<PokemonStat>,
-    var types : List<PokemonType>
+    @Transient
+    var img_url : String?,
+    var types : List<PokemonType>,
 //    var species : List<PokemonSpecies_NAR>
         )
