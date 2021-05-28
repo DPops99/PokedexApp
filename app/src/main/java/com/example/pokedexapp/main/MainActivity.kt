@@ -20,6 +20,13 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        if (savedInstanceState==null){
+            setCurrentFragment(SearchFragment())
+        }
+
+
+        supportActionBar?.hide()
+
         setListeners()
     }
 
