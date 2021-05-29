@@ -1,5 +1,7 @@
 package com.example.pokedexapp.network.model
 
+import java.io.Serializable
+
 data class Pokemon (
     var id : Int,
     var name : String,
@@ -10,4 +12,4 @@ data class Pokemon (
     var img_url : String?,
     var types : List<PokemonType>,
 //    var species : List<PokemonSpecies_NAR>
-        )
+        ) : Serializable

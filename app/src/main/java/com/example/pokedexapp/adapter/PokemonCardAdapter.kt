@@ -2,6 +2,7 @@ package com.example.pokedexapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -10,11 +11,22 @@ import com.example.pokedexapp.databinding.PokemonCardLayoutBinding
 import com.example.pokedexapp.helper.ImageFileConverterHelper
 import com.example.pokedexapp.network.model.Pokemon
 
-class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context) : RecyclerView.Adapter<PokemonCardAdapter.PokemonViewHolder>(){
+class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context, val listener : PokemonCardAdapter.OnItemClickListener) : RecyclerView.Adapter<PokemonCardAdapter.PokemonViewHolder>(){
 
 
 
-    inner class PokemonViewHolder(val binding: PokemonCardLayoutBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class PokemonViewHolder(val binding: PokemonCardLayoutBinding) : RecyclerView.ViewHolder(binding.root),View.OnClickListener{
+
+        init {
+            binding.root.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            if (position!=RecyclerView.NO_POSITION){
+                listener.onClick(position)
+            }
+        }
 
     }
 
@@ -27,9 +39,15 @@ class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context
         holder.binding.cardSubtitle.text = pokemons[position].id.toString()
         holder.binding.cardImg.load(ImageFileConverterHelper.getImageFile(pokemons[position]))
         holder.binding.cardIcon.load(R.drawable.ic_star_1)
+
+
     }
 
     override fun getItemCount(): Int {
         return pokemons.size
+    }
+
+    interface OnItemClickListener{
+        fun onClick(position : Int)
     }
 }

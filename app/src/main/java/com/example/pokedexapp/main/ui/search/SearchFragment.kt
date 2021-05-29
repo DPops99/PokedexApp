@@ -1,6 +1,7 @@
 package com.example.pokedexapp.main.ui.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.example.pokedexapp.adapter.PokemonCardAdapter
 import com.example.pokedexapp.databinding.SearchFragmentLayoutBinding
 import com.example.pokedexapp.main.viewmodels.ApiViewModel
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), PokemonCardAdapter.OnItemClickListener {
 
     private lateinit var _binding : SearchFragmentLayoutBinding
     private val binding get() = _binding!!
@@ -36,7 +37,7 @@ class SearchFragment : Fragment() {
     fun setView(){
 
 
-        adapter = PokemonCardAdapter(ArrayList(),requireContext())
+        adapter = PokemonCardAdapter(ArrayList(),requireContext(), this )
         binding.searchRv.layoutManager = LinearLayoutManager(requireContext())
         binding.searchRv.adapter = adapter
 
@@ -45,6 +46,11 @@ class SearchFragment : Fragment() {
             adapter.notifyDataSetChanged()
         })
 
+
+    }
+
+    override fun onClick(position: Int) {
+        Log.d("DANIJEL_LISTENER",adapter.pokemons[position].toString())
 
     }
 }
