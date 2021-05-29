@@ -1,5 +1,6 @@
 package com.example.pokedexapp.main.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedexapp.adapter.PokemonCardAdapter
 import com.example.pokedexapp.databinding.SearchFragmentLayoutBinding
 import com.example.pokedexapp.main.viewmodels.ApiViewModel
+import com.example.pokedexapp.pokemon.PokemonActivity
 
 class SearchFragment : Fragment(), PokemonCardAdapter.OnItemClickListener {
 
@@ -20,6 +22,7 @@ class SearchFragment : Fragment(), PokemonCardAdapter.OnItemClickListener {
     private val binding get() = _binding!!
     private lateinit var adapter: PokemonCardAdapter
     private val pokemonModel : ApiViewModel by activityViewModels()
+    val current_pokemon = "CURRENT_POKEMON"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,5 +55,12 @@ class SearchFragment : Fragment(), PokemonCardAdapter.OnItemClickListener {
     override fun onClick(position: Int) {
         Log.d("DANIJEL_LISTENER",adapter.pokemons[position].toString())
 
+        startPokemonActivity(position)
+    }
+
+    fun startPokemonActivity(position: Int){
+        val intent = Intent(this.context, PokemonActivity::class.java)
+        intent.putExtra(current_pokemon, adapter.pokemons[position])
+        startActivity(intent)
     }
 }
