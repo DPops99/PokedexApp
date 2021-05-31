@@ -23,4 +23,6 @@ interface PokemonDao {
 
     @Query("SELECT MAX(pOrder) FROM pokemons")
     suspend fun getLargerstOrder() : Int
+
+
 }

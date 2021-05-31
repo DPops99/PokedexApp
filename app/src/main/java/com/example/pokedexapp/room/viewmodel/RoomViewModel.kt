@@ -93,4 +93,14 @@ class RoomViewModel(context: Context) : ViewModel() {
             fav_pokemons.value = roomDB.pokemonDao().getAllFavorite() as ArrayList<Pokemon>
         }
     }
+
+    fun deleteFavPokemons(){
+        viewModelScope.launch {
+            for (pokemon in fav_pokemons.value!!){
+                pokemon.order = 0
+                pokemon.isFavorite = false
+                roomDB.pokemonDao().insert(pokemon)
+            }
+        }
+    }
 }
