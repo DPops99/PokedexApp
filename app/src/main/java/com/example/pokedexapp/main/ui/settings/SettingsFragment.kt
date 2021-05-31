@@ -1,11 +1,13 @@
 package com.example.pokedexapp.main.ui.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.pokedexapp.about.AboutActivity
 import com.example.pokedexapp.databinding.SettingsFragmentLayoutBinding
 import com.example.pokedexapp.room.viewmodel.RoomFactory
 import com.example.pokedexapp.room.viewmodel.RoomViewModel
@@ -35,6 +37,10 @@ class SettingsFragment : Fragment() {
     fun setListeners(){
         binding.clearFavBtn.setOnClickListener {
             pokemonRoom.deleteFavPokemons()
+        }
+
+        binding.moreInfoBtn.setOnClickListener {
+            startActivity(Intent(requireContext(), AboutActivity::class.java))
         }
     }
 }

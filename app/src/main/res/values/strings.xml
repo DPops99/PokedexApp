@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PokedexApp</string>
+    <string name="app_name">Pokedex App</string>
     <string name="search">Search</string>
     <string name="favorite">Favorites </string>
     <string name="settings">Settings</string>
@@ -12,4 +12,12 @@
     <string name="about_contex">Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis.</string>
     <string name="more">MORE INFO</string>
     <string name="about_clear">CLAER MY FAVORITES LIST</string>
+    <string name="sofa">SofaScore Android Academy</string>
+    <string name="sofa_class">Class 2021</string>
+    <string name="sofa_score">SofaScore</string>
+    <string name="about_name">App Name</string>
+    <string name="abour_api">API Credit</string>
+    <string name="api_credit">pokemons</string>
+    <string name="developer">Developer</string>
+    <string name="dev_name">Danijel Popović</string>
 </resources>
