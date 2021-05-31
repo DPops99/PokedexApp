@@ -7,5 +7,9 @@
     <string name="pokemon_num">POKEMON_TYPE</string>
     <string name="tag_edit">tag_edit</string>
     <string name="tag_check">tag_check</string>
-
+    <string name="lang">Language</string>
+    <string name="about_me">About me</string>
+    <string name="about_contex">Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis.</string>
+    <string name="more">MORE INFO</string>
+    <string name="about_clear">CLAER MY FAVORITES LIST</string>
 </resources>
