@@ -39,8 +39,6 @@ class ApiViewModel : ViewModel(){
             }
             result.await()
             apiPokemons.value = helper
-
-
         }
     }
 

@@ -11,7 +11,7 @@ import com.example.pokedexapp.databinding.PokemonCardLayoutBinding
 import com.example.pokedexapp.helper.ImageFileConverterHelper
 import com.example.pokedexapp.network.model.Pokemon
 
-class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context, val listener : PokemonCardAdapter.OnItemClickListener) : RecyclerView.Adapter<PokemonCardAdapter.PokemonViewHolder>(){
+class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context, val listener : PokemonCardAdapter.OnItemClickListener, val fav_listener : PokemonCardAdapter.OnFavClickListener?) : RecyclerView.Adapter<PokemonCardAdapter.PokemonViewHolder>(){
 
 
 
@@ -38,9 +38,22 @@ class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context
         holder.binding.cardTitle.text = pokemons[position].name
         holder.binding.cardSubtitle.text = pokemons[position].id.toString()
         holder.binding.cardImg.load(ImageFileConverterHelper.getImageFile(pokemons[position]))
-        holder.binding.cardIcon.load(R.drawable.ic_star_1)
 
+        holder.binding.cardIcon.apply {
+            if (pokemons[position].isFavorite)
+                load(R.drawable.ic_star_0)
+            else
+                load(R.drawable.ic_star_1)
 
+            fav_listener?.let {
+                setOnClickListener {
+                    if (pokemons[position].isFavorite)
+                        fav_listener.onClick(position, false)
+                    else
+                        fav_listener.onClick(position, true)
+                }
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -49,5 +62,9 @@ class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context
 
     interface OnItemClickListener{
         fun onClick(position : Int)
+    }
+
+    interface OnFavClickListener{
+        fun onClick(position: Int, isFav : Boolean)
     }
 }

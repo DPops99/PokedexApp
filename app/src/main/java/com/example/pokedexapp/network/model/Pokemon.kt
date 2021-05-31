@@ -26,6 +26,9 @@ data class Pokemon (
     @ColumnInfo(name = "types")
     @TypeConverters(TypeConverter::class)
     var types : List<PokemonType>,
+    @Transient
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite : Boolean,
     @TypeConverters(NARConverter::class)
     var species : NamedApiResource
         ) : Serializable
