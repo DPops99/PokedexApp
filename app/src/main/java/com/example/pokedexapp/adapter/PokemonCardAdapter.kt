@@ -67,4 +67,16 @@ class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context
     interface OnFavClickListener{
         fun onClick(position: Int, isFav : Boolean)
     }
+
+    fun moveItem(from : Int, to: Int){
+        val from_pokemon = pokemons[from]
+        val from_order = pokemons[from].order
+        val to_order = pokemons[to].order
+
+        pokemons[from].order = to_order
+        pokemons[to].order = from_order
+
+        pokemons[from] = pokemons[to]
+        pokemons[to] = from_pokemon
+    }
 }

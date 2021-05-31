@@ -10,6 +10,7 @@ import com.example.pokedexapp.network.repository.Repository
 import com.example.pokedexapp.room.database.AppDatabase
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlin.math.max
 
 class RoomViewModel(context: Context) : ViewModel() {
 
@@ -35,7 +36,8 @@ class RoomViewModel(context: Context) : ViewModel() {
                 for (pokemon_NAR in pokemonList.results) {
                     viewModelScope.async {
                         val pokemon = Repository().getPokemon(pokemon_NAR.name)
-
+//                        val maxOrder = roomDB.pokemonDao().getLargerstOrder()
+//                        pokemon.order = maxOrder+1
                         Log.d("DANIJEL_EACH_POK", pokemon.toString())
 //                        helper.add(pokemon)
                         roomDB.pokemonDao().insert(pokemon)
@@ -70,6 +72,14 @@ class RoomViewModel(context: Context) : ViewModel() {
 
     fun insert(pokemon: Pokemon){
         viewModelScope.launch {
+            if (pokemon.isFavorite){
+                val maxOrder = roomDB.pokemonDao().getLargerstOrder()
+                Log.d("DANIJEL_INS",maxOrder.toString())
+                pokemon.order = maxOrder + 1
+            }
+            else{
+                pokemon.order = 0
+            }
             roomDB.pokemonDao().insert(pokemon)
             pokemons.value = roomDB.pokemonDao().getAll() as ArrayList<Pokemon>
             fav_pokemons.value = roomDB.pokemonDao().getAllFavorite() as ArrayList<Pokemon>

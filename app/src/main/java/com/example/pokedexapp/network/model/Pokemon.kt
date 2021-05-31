@@ -29,6 +29,9 @@ data class Pokemon (
     @Transient
     @ColumnInfo(name = "isFavorite")
     var isFavorite : Boolean,
+    @Transient
+    @ColumnInfo(name = "pOrder")
+    var order: Int=0,
     @TypeConverters(NARConverter::class)
     var species : NamedApiResource
         ) : Serializable
