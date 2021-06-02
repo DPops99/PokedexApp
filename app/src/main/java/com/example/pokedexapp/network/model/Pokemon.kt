@@ -17,6 +17,7 @@ data class Pokemon (
     @ColumnInfo(name="pokemon_name")
     var name : String,
     var height : Int,
+    var weight : Int,
     @ColumnInfo(name="abilities")
     @TypeConverters(AbilityConverter::class)
     var abilities : List<PokemonAbility>,

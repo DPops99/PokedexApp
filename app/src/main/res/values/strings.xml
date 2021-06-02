@@ -20,4 +20,16 @@
     <string name="api_credit">pokemons</string>
     <string name="developer">Developer</string>
     <string name="dev_name">Danijel Popović</string>
+    <string name="abilities">Abilities</string>
+    <string name="height">HEIGHT</string>
+    <string name="weight">WEIGHT</string>
+    <string name="total">Total</string>
+    <string name="pokemon_stats">Pokéathlon stats</string>
+    <string name="evolution">Evolution</string>
+    <string name="hp">HP</string>
+    <string name="attack">Attack:</string>
+    <string name="defence">Defenece:</string>
+    <string name="sp_atc">Sp. Atk:</string>
+    <string name="sp_def">Sp. Def:</string>
+    <string name="speed">Speed</string>
 </resources>

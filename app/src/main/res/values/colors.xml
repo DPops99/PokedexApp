@@ -46,4 +46,29 @@
     <color name="flat_base_stats_05_sp_def">#61c52e</color>
     <color name="flat_base_stats_06_speed">#f879dd</color>
     <color name="flat_neutral_background">#801c1f22</color>
+
+    <style name="progressBarHp" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/flat_base_stats_01_hp</item>
+    </style>
+
+    <style name="progressBarAttack" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/flat_base_stats_02_attack</item>
+    </style>
+
+    <style name="progressBarDefence" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/flat_base_stats_03_defense</item>
+    </style>
+
+    <style name="progressBarSpAtc" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/flat_base_stats_04_sp_atk</item>
+    </style>
+
+    <style name="progressBarSpDef" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/flat_base_stats_05_sp_def</item>
+    </style>
+
+    <style name="progressBarSpeed" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/flat_base_stats_06_speed</item>
+    </style>
+
 </resources>
