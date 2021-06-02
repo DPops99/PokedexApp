@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokedexapp.network.model.EvolutionChain
 import com.example.pokedexapp.network.model.Pokemon
 import com.example.pokedexapp.network.model.PokemonList
 import com.example.pokedexapp.network.repository.Repository
@@ -13,12 +14,11 @@ import kotlinx.coroutines.launch
 class ApiViewModel : ViewModel(){
 
     val apiPokemons = MutableLiveData<ArrayList<Pokemon>>()
-
+    val apiEvolutionChain = MutableLiveData<EvolutionChain>()
 
 
     init {
-        Log.d("DANIJEL_POK","init")
-        getPokemonList()
+
     }
 
     fun getPokemonList() {
@@ -39,6 +39,31 @@ class ApiViewModel : ViewModel(){
             }
             result.await()
             apiPokemons.value = helper
+        }
+    }
+
+    fun getPokemonSpecies(pokemon: Pokemon){
+        viewModelScope.launch {
+            val specie = Repository().getPokemonSpecies(pokemon.id.toString())
+            Log.d("DANIJEL_SPECIES",specie.toString())
+            val newUrl = specie.evolution_chain.url.takeLast(specie.evolution_chain.url.length-26)
+            getEvoulutionChain(newUrl)
+        }
+    }
+
+    fun getEvoulutionChain(value : String){
+        viewModelScope.launch {
+            apiEvolutionChain.value = Repository().getEvolutionChain(value)
+            var helper = ArrayList<Pokemon>()
+            helper.add(Repository().getPokemon(apiEvolutionChain.value?.chain?.species?.name!!))
+            var current_field = apiEvolutionChain.value?.chain?.evolves_to
+            while(current_field?.size != 0){
+                helper.add(Repository().getPokemon(current_field?.get(0)?.species?.name!!))
+                current_field = current_field?.get(0)?.evolves_to
+            }
+
+            apiPokemons.value = helper
+            Log.d("DANIJEL_RESULT_EVOL",apiPokemons.value.toString())
         }
     }
 

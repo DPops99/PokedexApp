@@ -10,3 +10,7 @@ data class NamedApiResource (
         var name : String,
         var url : String
         ): Serializable
+
+data class ApiResource(
+        var url : String
+) : Serializable

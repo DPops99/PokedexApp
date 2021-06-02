@@ -2,23 +2,33 @@ package com.example.pokedexapp.pokemon
 
 import android.graphics.Color
 import android.graphics.ColorFilter
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.pokedexapp.R
+import com.example.pokedexapp.adapter.PokemonCardAdapter
 import com.example.pokedexapp.databinding.ActivityPokemonBinding
 import com.example.pokedexapp.helper.ImageFileConverterHelper
 import com.example.pokedexapp.main.ui.search.SearchFragment
+import com.example.pokedexapp.main.viewmodels.ApiViewModel
 import com.example.pokedexapp.network.model.Pokemon
+import com.example.pokedexapp.pokemon.adapter.EvolutionAdapter
 import com.google.android.material.chip.Chip
 
 class PokemonActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPokemonBinding
+    private lateinit var adapter: EvolutionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +44,8 @@ class PokemonActivity : AppCompatActivity() {
     fun setView(){
 
         setSupportActionBar(binding.pokemonToolbar)
+        val pokemonModel : ApiViewModel by viewModels()
+
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -45,6 +57,8 @@ class PokemonActivity : AppCompatActivity() {
         intent?.getSerializableExtra(SearchFragment().current_pokemon)?.let {
             val current_pokemon = it as Pokemon
             var total = 0
+
+
 
             binding.pokemonName.text = current_pokemon.name
             binding.pokemonNum.text = current_pokemon.id.toString()
@@ -107,10 +121,10 @@ class PokemonActivity : AppCompatActivity() {
             binding.speed.itemProgress.progress = current_pokemon.stats[5].base_stat
             total += current_pokemon.stats[5].base_stat
 
-            var progressDrawable :Drawable = binding.speed.itemProgress.progressDrawable.mutate()
-            progressDrawable.setColorFilter(Color.BLUE, android.graphics.PorterDuff.Mode.SRC_ATOP)
-            binding.speed.itemProgress.progressDrawable = progressDrawable
-//            binding.speed.itemProgress.progress = current_pokemon.stats[5].base_stat
+            val layerDrawable = binding.speed.itemProgress.progressDrawable as LayerDrawable
+            val progressDrawable :Drawable = layerDrawable.findDrawableByLayerId(android.R.id.progress)
+            progressDrawable.setColorFilter(resources.getColor(R.color.flat_base_stats_06_speed), PorterDuff.Mode.SRC_ATOP)
+
 
 
 
@@ -118,6 +132,19 @@ class PokemonActivity : AppCompatActivity() {
             binding.total.itemValue2.text = total.toString()
             binding.total.itemProgress.visibility = View.INVISIBLE
 
+
+            binding.pokemonRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            adapter = EvolutionAdapter(ArrayList<Pokemon>() ,applicationContext)
+            binding.pokemonRv.adapter = adapter
+
+            pokemonModel.apiEvolutionChain.observe(this, Observer {
+                Log.d("DANIJEL_PoK",it.toString())
+            })
+            pokemonModel.getPokemonSpecies(current_pokemon)
+            pokemonModel.apiPokemons.observe(this, Observer {
+                adapter.chains = it
+                adapter.notifyDataSetChanged()
+            })
 
         }
     }
