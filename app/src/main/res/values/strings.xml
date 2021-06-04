@@ -40,4 +40,7 @@
     <string name="types">TYPES</string>
     <string name="defensive">Defensive</string>
     <string name="none">None</string>
+    <string name="damage_overview">DAMAGE OVERVIEW</string>
+    <string name="moves">MOVES</string>
+    <string name="pokemons">POKEMONS</string>
 </resources>

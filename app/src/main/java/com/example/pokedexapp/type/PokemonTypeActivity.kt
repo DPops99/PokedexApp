@@ -9,23 +9,42 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.example.pokedexapp.R
-import com.example.pokedexapp.type.ui.main.SectionsPagerAdapter
+import com.example.pokedexapp.databinding.ActivityPokemonTypeBinding
+import com.example.pokedexapp.type.ui.adapter.TabAdapter
 
 class PokemonTypeActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityPokemonTypeBinding
+    private lateinit var adapter: TabAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pokemon_type)
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = findViewById(R.id.fab)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        binding = ActivityPokemonTypeBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.damage_overview)))
+        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.moves)))
+        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.pokemons)))
+        binding.tabs.tabGravity = TabLayout.GRAVITY_FILL
+
+        adapter = TabAdapter(this, supportFragmentManager, binding.tabs.tabCount)
+        binding.viewPager.adapter = adapter
+        binding.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabs))
+        binding.tabs.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                binding.viewPager.currentItem = tab?.position!!
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+        })
     }
 }
