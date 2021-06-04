@@ -1,28 +1,25 @@
 package com.example.pokedexapp.pokemon
 
-import android.graphics.Color
-import android.graphics.ColorFilter
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.pokedexapp.R
-import com.example.pokedexapp.adapter.PokemonCardAdapter
 import com.example.pokedexapp.databinding.ActivityPokemonBinding
 import com.example.pokedexapp.helper.ImageFileConverterHelper
 import com.example.pokedexapp.main.ui.search.SearchFragment
 import com.example.pokedexapp.main.viewmodels.ApiViewModel
 import com.example.pokedexapp.network.model.Pokemon
 import com.example.pokedexapp.pokemon.adapter.EvolutionAdapter
+import com.example.pokedexapp.type.PokemonTypeActivity
 import com.google.android.material.chip.Chip
 
 class PokemonActivity : AppCompatActivity() {
@@ -68,6 +65,9 @@ class PokemonActivity : AppCompatActivity() {
             for (item_type in current_pokemon.types){
                 var chip = Chip(this)
                 chip.text = item_type.type.name
+                chip.setOnClickListener {
+                    startActivity(Intent(this, PokemonTypeActivity::class.java))
+                }
                 binding.pokemonChipGroup.addView(chip)
             }
 

@@ -32,4 +32,12 @@
     <string name="sp_atc">Sp. Atk:</string>
     <string name="sp_def">Sp. Def:</string>
     <string name="speed">Speed</string>
+    <string name="title_activity_pokemon_type">PokemonTypeActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="offensive">Offensive</string>
+    <string name="power">POWER</string>
+    <string name="types">TYPES</string>
+    <string name="defensive">Defensive</string>
+    <string name="none">None</string>
 </resources>
