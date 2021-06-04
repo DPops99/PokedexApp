@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.pokedexapp.R
 import com.example.pokedexapp.databinding.PokemonCardLayoutBinding
-import com.example.pokedexapp.helper.ImageFileConverterHelper
+import com.example.pokedexapp.helper.StringGeneratorHelper
 import com.example.pokedexapp.network.model.Pokemon
 
 class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context, val listener : PokemonCardAdapter.OnItemClickListener, val fav_listener : PokemonCardAdapter.OnFavClickListener?) : RecyclerView.Adapter<PokemonCardAdapter.PokemonViewHolder>(){
@@ -37,7 +37,7 @@ class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         holder.binding.cardTitle.text = pokemons[position].name
         holder.binding.cardSubtitle.text = pokemons[position].id.toString()
-        holder.binding.cardImg.load(ImageFileConverterHelper.getImageFile(pokemons[position]))
+        holder.binding.cardImg.load(StringGeneratorHelper.getImageFile(pokemons[position]))
 
         holder.binding.cardIcon.apply {
             if (pokemons[position].isFavorite)

@@ -8,3 +8,5 @@ data class PokemonType (
     var slot : Int,
     var type : NamedApiResource
         ): Serializable
+
+

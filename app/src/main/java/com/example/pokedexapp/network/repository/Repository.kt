@@ -2,10 +2,7 @@ package com.example.pokedexapp.network.repository
 
 import android.util.Log
 import com.example.pokedexapp.network.api.PokemonService
-import com.example.pokedexapp.network.model.EvolutionChain
-import com.example.pokedexapp.network.model.Pokemon
-import com.example.pokedexapp.network.model.PokemonList
-import com.example.pokedexapp.network.model.PokemonSpecies
+import com.example.pokedexapp.network.model.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -37,5 +34,9 @@ class Repository {
 
     suspend fun getPokemonSpecies(value: String):PokemonSpecies{
         return service.getPokemonSpecies(value)
+    }
+
+    suspend fun getTypes(value: String):Types{
+        return service.getTypes(value)
     }
 }

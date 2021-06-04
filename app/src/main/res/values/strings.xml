@@ -43,4 +43,7 @@
     <string name="damage_overview">DAMAGE OVERVIEW</string>
     <string name="moves">MOVES</string>
     <string name="pokemons">POKEMONS</string>
+    <string name="twice">2x</string>
+    <string name="half">1/2x</string>
+    <string name="zero">0x</string>
 </resources>

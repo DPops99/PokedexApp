@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.pokedexapp.R
 import com.example.pokedexapp.databinding.ActivityPokemonBinding
-import com.example.pokedexapp.helper.ImageFileConverterHelper
+import com.example.pokedexapp.helper.StringGeneratorHelper
 import com.example.pokedexapp.main.ui.search.SearchFragment
 import com.example.pokedexapp.main.viewmodels.ApiViewModel
 import com.example.pokedexapp.network.model.Pokemon
@@ -26,6 +26,8 @@ class PokemonActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPokemonBinding
     private lateinit var adapter: EvolutionAdapter
+//    private val typeViewModel: TypeViewModel by viewModels()
+    val current_type = "CURRENT_TYPE"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +45,6 @@ class PokemonActivity : AppCompatActivity() {
         setSupportActionBar(binding.pokemonToolbar)
         val pokemonModel : ApiViewModel by viewModels()
 
-
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
@@ -59,14 +60,17 @@ class PokemonActivity : AppCompatActivity() {
 
             binding.pokemonName.text = current_pokemon.name
             binding.pokemonNum.text = current_pokemon.id.toString()
-            binding.pokemonImg.load(ImageFileConverterHelper.getImageFile(current_pokemon))
+            binding.pokemonImg.load(StringGeneratorHelper.getImageFile(current_pokemon))
             binding.pokemonFav.load(R.drawable.ic_star_1)
 
             for (item_type in current_pokemon.types){
                 var chip = Chip(this)
-                chip.text = item_type.type.name
+                chip.text = item_type.type.name.capitalize()
+                chip.textSize = 14.0F
+
                 chip.setOnClickListener {
-                    startActivity(Intent(this, PokemonTypeActivity::class.java))
+                    getTypes(chip.text.toString().decapitalize())
+
                 }
                 binding.pokemonChipGroup.addView(chip)
             }
@@ -146,6 +150,20 @@ class PokemonActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             })
 
+//            typeViewModel.api_types.observe(this, Observer {
+//                Log.d("DANIJEL",it.toString())
+//                startActivity(Intent(this, PokemonTypeActivity::class.java))
+//            })
+
         }
     }
+
+    fun getTypes(value: String){
+        Log.d("DANIJEL_SENDING",value)
+        intent = Intent(this, PokemonTypeActivity::class.java)
+        intent.putExtra(current_type, value)
+        startActivity(intent)
+//        typeViewModel.getTypes(value)
+    }
+
 }
