@@ -3,6 +3,7 @@ package com.example.pokedexapp.network.api
 import com.example.pokedexapp.network.model.*
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PokemonService {
 
@@ -11,6 +12,9 @@ interface PokemonService {
 
     @GET("pokemon/")
     suspend fun getPokemons() : PokemonList
+
+    @GET("pokemon/")
+    suspend fun getPokemons2(@Query("limit") limit : Int, @Query("offset") offset : Int) : PokemonList
 
     @GET("{id}")
     suspend fun getEvolutionChain(@Path("id") value: String) : EvolutionChain

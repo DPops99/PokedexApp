@@ -2,6 +2,7 @@ package com.example.pokedexapp.pokemon.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -24,12 +25,19 @@ class EvolutionAdapter(var chains : List<Pokemon>, var context: Context, var cur
     override fun onBindViewHolder(holder: EvolutionHolder, position: Int) {
         holder.binding.pokemonCardImg.load(StringGeneratorHelper.getImageFile(chains[position]))
         holder.binding.pokemonCardName.text = chains[position].name.capitalize()
-        if (current_pok_id == chains[position].id)
-            holder.binding.cardPokemonEvol.strokeColor = context.resources.getColor(R.color.cold_gray)
-        if (position == 0)
-            holder.binding.evoulitonText.text = context.resources.getString(R.string.unevolved)
-        else
-            holder.binding.evoulitonText.text = position.toString().plus(" ").plus(context.getString(R.string.evolution)).toUpperCase()
+
+        if (current_pok_id != -1) {
+            if (current_pok_id == chains[position].id)
+                holder.binding.cardPokemonEvol.strokeColor = context.resources.getColor(R.color.cold_gray)
+            if (position == 0)
+                holder.binding.evoulitonText.text = context.resources.getString(R.string.unevolved)
+            else
+                holder.binding.evoulitonText.text = position.toString().plus(" ").plus(context.getString(R.string.evolution)).toUpperCase()
+        }
+        else {
+            holder.binding.evoulitonText.visibility = View.INVISIBLE
+            holder.binding.cardPokemonEvol.visibility = View.INVISIBLE
+        }
 //        for (item_type in chains[position].types) {
 //            val chip = Chip(context)
 //            chip.text = item_type.type.name

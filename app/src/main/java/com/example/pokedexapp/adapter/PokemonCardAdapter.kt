@@ -35,8 +35,8 @@ class PokemonCardAdapter(var pokemons : ArrayList<Pokemon>, val context: Context
     }
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
-        holder.binding.cardTitle.text = pokemons[position].name
-        holder.binding.cardSubtitle.text = pokemons[position].id.toString()
+        holder.binding.cardTitle.text = pokemons[position].name.capitalize()
+        holder.binding.cardSubtitle.text = StringGeneratorHelper.getCorrectIndexRep(pokemons[position].id.toString())
         holder.binding.cardImg.load(StringGeneratorHelper.getImageFile(pokemons[position]))
 
         holder.binding.cardIcon.apply {

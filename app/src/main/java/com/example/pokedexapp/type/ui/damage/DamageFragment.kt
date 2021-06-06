@@ -1,5 +1,8 @@
 package com.example.pokedexapp.type.ui.damage
 
+import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -39,11 +42,28 @@ class DamageFragment :Fragment(){
     fun setView(){
 
         binding.fromTwice.damageText.text = getString(R.string.twice)
+        binding.fromTwice.damageText.setTextColor(requireContext().resources.getColor(R.color.success))
+        setCardBackColor(binding.fromTwice.reusableLl.background as LayerDrawable, getString(R.string.success),getString(R.string._success))
+
         binding.fromHalf.damageText.text = getString(R.string.half)
+        binding.fromHalf.damageText.setTextColor(requireContext().resources.getColor(R.color.error))
+        setCardBackColor(binding.fromHalf.reusableLl.background as LayerDrawable, getString(R.string.error),getString(R.string._error))
+
         binding.fromZero.damageText.text = getString(R.string.zero)
+        binding.fromZero.damageText.setTextColor(requireContext().resources.getColor(R.color.surface_2))
+        setCardBackColor(binding.fromZero.reusableLl.background as LayerDrawable,getString(R.string.cold_gray), getString(R.string.surface_2))
+
         binding.toTwice.damageText.text = getString(R.string.twice)
+        binding.toTwice.damageText.setTextColor(requireContext().resources.getColor(R.color.success))
+        setCardBackColor(binding.toTwice.reusableLl.background as LayerDrawable, getString(R.string.success), getString(R.string._success))
+
         binding.toHalf.damageText.text = getString(R.string.half)
+        binding.toHalf.damageText.setTextColor(requireContext().resources.getColor(R.color.error))
+        setCardBackColor(binding.toHalf.reusableLl.background as LayerDrawable, getString(R.string.error), getString(R.string._error))
+
         binding.toZero.damageText.text = getString(R.string.zero)
+        binding.toZero.damageText.setTextColor(requireContext().resources.getColor(R.color.surface_2))
+        setCardBackColor(binding.toZero.reusableLl.background as LayerDrawable,getString(R.string.cold_gray), getString(R.string.surface_2) )
 
         typeApiViewModel.api_types.observe(viewLifecycleOwner, Observer {
             for (item in it.damage_relations.double_damage_from) {
@@ -90,6 +110,7 @@ class DamageFragment :Fragment(){
                 binding.toZero.damageChips.addView(chip)
             }
 
+
             typeApiViewModel.getMoves()
         })
 
@@ -97,7 +118,15 @@ class DamageFragment :Fragment(){
             Log.d("DANJEL_MOVES",it.toString())
         })
 
-
-
     }
+
+
+    fun setCardBackColor(layerDrawable: LayerDrawable, valueR :String, valueB: String){
+        val backDrawable : Drawable = layerDrawable.findDrawableByLayerId(R.id.back_id)
+        val rectDrawable : Drawable = layerDrawable.findDrawableByLayerId(R.id.back_rec)
+        backDrawable.setColorFilter(resources.getColor(StringGeneratorHelper.getCardColorId(valueB, requireContext())), PorterDuff.Mode.SRC_ATOP)
+        rectDrawable.setColorFilter(resources.getColor(StringGeneratorHelper.getCardColorId(valueR, requireContext())), PorterDuff.Mode.SRC_ATOP)
+    }
+
+
 }

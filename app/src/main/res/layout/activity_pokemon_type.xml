@@ -1,41 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".type.PokemonTypeActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/type_appbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/type_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/flat_pokemon_type_grass"
-        >
+        app:contentInsetStart="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/surface_1"
-            android:gravity="center"
-            android:minHeight="?actionBarSize"
-            android:padding="@dimen/appbar_padding"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+           />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/flat_pokemon_type_grass" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:background="@color/flat_pokemon_type_grass"
+            android:layout_below="@+id/type_toolbar"/>
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_below="@+id/tabs"
+        />
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

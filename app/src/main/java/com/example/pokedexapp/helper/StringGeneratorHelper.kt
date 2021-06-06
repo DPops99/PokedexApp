@@ -14,6 +14,7 @@ object StringGeneratorHelper {
     val basic_color_string = "@color/flat_pokemon_type_"
     val basic_color_stats_string = "@color/flat_base_stats_"
     val basic_image_file = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
+    val basic_card_color = "@color/"
 
 
     fun getImageFile(pokemon : Pokemon):String{
@@ -24,6 +25,10 @@ object StringGeneratorHelper {
     fun getColorId(value : String, context: Context):Int{
         Log.d("DANIJEL_COLOR_ID",context.resources.getIdentifier(basic_color_string.plus(value), null, context.packageName).toString())
         return  context.resources.getIdentifier(basic_color_string.plus(value), null, context.packageName)
+    }
+
+    fun getCardColorId(value: String, context: Context):Int{
+        return context.resources.getIdentifier(basic_card_color.plus(value), null, context.packageName)
     }
 
     fun getColorStatsId(value: String, context: Context):Int{

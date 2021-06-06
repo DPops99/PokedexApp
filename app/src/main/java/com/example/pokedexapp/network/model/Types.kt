@@ -5,7 +5,8 @@ data class Types (
         var name : String,
         var damage_relations : TypeRelations,
         var move_damage_class: NamedApiResource,
-        var moves: List<NamedApiResource>
+        var moves: List<NamedApiResource>,
+        var pokemon: List<TypePokemon>
         )
 
 data class TypeRelations(
@@ -15,4 +16,9 @@ data class TypeRelations(
         var no_damage_from : List<NamedApiResource>,
         var half_damage_from : List<NamedApiResource>,
         var double_damage_from : List<NamedApiResource>
+)
+
+data class TypePokemon(
+        var slot : Int,
+        var pokemon : NamedApiResource
 )

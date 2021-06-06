@@ -47,4 +47,10 @@
     <string name="half">1/2x</string>
     <string name="zero">0x</string>
     <string name="unevolved">UNEVOLVED</string>
+    <string name="success">success</string>
+    <string name="error">error</string>
+    <string name="surface_2">surface_2</string>
+    <string name="_success">_success</string>
+    <string name="_error">_error</string>
+    <string name="cold_gray">cold_gray</string>
 </resources>

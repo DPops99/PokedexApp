@@ -182,6 +182,7 @@ class PokemonActivity : AppCompatActivity() {
         intent = Intent(this, PokemonTypeActivity::class.java)
         intent.putExtra(current_type, value)
         startActivity(intent)
+        finish()
 //        typeViewModel.getTypes(value)
     }
 

@@ -13,8 +13,10 @@
     <color name="dark">#1c1f22</color>
     <color name="dark_alpha">#331c1f22</color>
     <color name="error">#ff4848</color>
+    <color name="_error">#ffe6ff</color>
     <color name="surface_2">#f3f6f9</color>
     <color name="success">#12ca5d</color>
+    <color name="_success">#ddffff</color>
     <color name="neutrals_alpha_n_lv_3">#73222226</color>
     <color name="on_tint_on_tint_primary">#fdffffff</color>
     <color name="flat_pokemon_type_grass">#2db407</color>
