@@ -24,7 +24,7 @@
     <string name="height">HEIGHT</string>
     <string name="weight">WEIGHT</string>
     <string name="total">Total</string>
-    <string name="pokemon_stats">Pokéathlon stats</string>
+    <string name="pokemon_stats">Stats</string>
     <string name="evolution">Evolution</string>
     <string name="hp">HP</string>
     <string name="attack">Attack:</string>
@@ -40,10 +40,11 @@
     <string name="types">TYPES</string>
     <string name="defensive">Defensive</string>
     <string name="none">None</string>
-    <string name="damage_overview">DAMAGE OVERVIEW</string>
+    <string name="damage_overview">DAMAG</string>
     <string name="moves">MOVES</string>
     <string name="pokemons">POKEMONS</string>
     <string name="twice">2x</string>
     <string name="half">1/2x</string>
     <string name="zero">0x</string>
+    <string name="unevolved">UNEVOLVED</string>
 </resources>

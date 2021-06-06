@@ -48,8 +48,9 @@ class DamageFragment :Fragment(){
         typeApiViewModel.api_types.observe(viewLifecycleOwner, Observer {
             for (item in it.damage_relations.double_damage_from) {
                 val chip = Chip(requireContext())
-                chip.text = item.name
+                chip.text = item.name.capitalize()
                 chip.setChipBackgroundColorResource(StringGeneratorHelper.getColorId(item.name, requireContext()))
+                chip.setTextColor(resources.getColor(R.color.surface_1))
                 Log.d("DANIJEL_BACK",StringGeneratorHelper.getColorId("bug", requireContext()).toString().plus(" ").plus(R.color.flat_pokemon_type_bug))
                 binding.fromTwice.damageChips.addView(chip)
             }
@@ -57,33 +58,45 @@ class DamageFragment :Fragment(){
                 val chip = Chip(requireContext())
                 chip.setChipBackgroundColorResource(StringGeneratorHelper.getColorId(item.name, requireContext()))
                 chip.text = item.name.capitalize()
+                chip.setTextColor(resources.getColor(R.color.surface_1))
                 binding.fromHalf.damageChips.addView(chip)
             }
             for (item in it.damage_relations.no_damage_from) {
                 val chip = Chip(requireContext())
                 chip.setChipBackgroundColorResource(StringGeneratorHelper.getColorId(item.name, requireContext()))
                 chip.text = item.name.capitalize()
+                chip.setTextColor(resources.getColor(R.color.surface_1))
                 binding.fromZero.damageChips.addView(chip)
             }
             for (item in it.damage_relations.double_damage_to) {
                 val chip = Chip(requireContext())
                 chip.setChipBackgroundColorResource(StringGeneratorHelper.getColorId(item.name, requireContext()))
                 chip.text = item.name.capitalize()
+                chip.setTextColor(resources.getColor(R.color.surface_1))
                 binding.toTwice.damageChips.addView(chip)
             }
             for (item in it.damage_relations.half_damage_to) {
                 val chip = Chip(requireContext())
                 chip.setChipBackgroundColorResource(StringGeneratorHelper.getColorId(item.name, requireContext()))
                 chip.text = item.name.capitalize()
+                chip.setTextColor(resources.getColor(R.color.surface_1))
                 binding.toHalf.damageChips.addView(chip)
             }
             for (item in it.damage_relations.no_damage_to) {
                 val chip = Chip(requireContext())
                 chip.setChipBackgroundColorResource(StringGeneratorHelper.getColorId(item.name, requireContext()))
                 chip.text = item.name.capitalize()
+                chip.setTextColor(resources.getColor(R.color.surface_1))
                 binding.toZero.damageChips.addView(chip)
             }
+
+            typeApiViewModel.getMoves()
         })
+
+        typeApiViewModel.api_moves.observe(viewLifecycleOwner, Observer {
+            Log.d("DANJEL_MOVES",it.toString())
+        })
+
 
 
     }

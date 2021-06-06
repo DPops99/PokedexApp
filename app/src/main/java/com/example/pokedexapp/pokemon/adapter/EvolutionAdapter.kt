@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.pokedexapp.R
 import com.example.pokedexapp.databinding.PokemonCardRecyclerViewBinding
 import com.example.pokedexapp.helper.StringGeneratorHelper
 import com.example.pokedexapp.network.model.Pokemon
+import com.google.android.material.chip.Chip
 
-class EvolutionAdapter(var chains : List<Pokemon>, var context: Context) : RecyclerView.Adapter<EvolutionAdapter.EvolutionHolder>(){
+class EvolutionAdapter(var chains : List<Pokemon>, var context: Context, var current_pok_id : Int) : RecyclerView.Adapter<EvolutionAdapter.EvolutionHolder>(){
 
     inner class EvolutionHolder(val binding: PokemonCardRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -21,7 +23,13 @@ class EvolutionAdapter(var chains : List<Pokemon>, var context: Context) : Recyc
 
     override fun onBindViewHolder(holder: EvolutionHolder, position: Int) {
         holder.binding.pokemonCardImg.load(StringGeneratorHelper.getImageFile(chains[position]))
-        holder.binding.pokemonCardName.text = chains[position].name
+        holder.binding.pokemonCardName.text = chains[position].name.capitalize()
+        if (current_pok_id == chains[position].id)
+            holder.binding.cardPokemonEvol.strokeColor = context.resources.getColor(R.color.cold_gray)
+        if (position == 0)
+            holder.binding.evoulitonText.text = context.resources.getString(R.string.unevolved)
+        else
+            holder.binding.evoulitonText.text = position.toString().plus(" ").plus(context.getString(R.string.evolution)).toUpperCase()
 //        for (item_type in chains[position].types) {
 //            val chip = Chip(context)
 //            chip.text = item_type.type.name

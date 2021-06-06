@@ -3,7 +3,9 @@ package com.example.pokedexapp.network.model
 data class Types (
         var id : Int,
         var name : String,
-        var damage_relations : TypeRelations
+        var damage_relations : TypeRelations,
+        var move_damage_class: NamedApiResource,
+        var moves: List<NamedApiResource>
         )
 
 data class TypeRelations(

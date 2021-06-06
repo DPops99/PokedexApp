@@ -21,4 +21,7 @@ interface PokemonService {
     @GET("type/{id_or_name}/")
     suspend fun getTypes(@Path("id_or_name") value: String): Types
 
+    @GET("move/{id or name}/")
+    suspend fun getMove(@Path("id_or_name") value: String):Move
+
 }

@@ -2,6 +2,7 @@ package com.example.pokedexapp.main.ui.favorite
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -115,11 +116,13 @@ class FavoriteFragment : Fragment(), PokemonCardAdapter.OnItemClickListener, Pok
 
     fun startPokemonActivity(position: Int){
         val intent = Intent(this.context, PokemonActivity::class.java)
+        Log.d("DANIJEL_FAVCHECK",adapter.pokemons[position].isFavorite.toString())
         intent.putExtra(current_pokemon, adapter.pokemons[position])
         startActivity(intent)
     }
 
     override fun onClick(position: Int, isFav: Boolean) {
+        Log.d("DANIJEL_FAVCHECK","can't enter")
         var fav_pokemon = adapter.pokemons[position]
         fav_pokemon.isFavorite = isFav
         pokemonRoom.insert(fav_pokemon)

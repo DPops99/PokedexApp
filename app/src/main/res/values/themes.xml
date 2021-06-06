@@ -19,7 +19,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.PokedexApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.PokedexApp.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
-    <style name="Theme.PokedexApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.PokedexApp.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 </resources>

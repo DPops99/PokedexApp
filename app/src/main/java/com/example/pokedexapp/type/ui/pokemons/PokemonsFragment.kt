@@ -1,6 +1,7 @@
 package com.example.pokedexapp.type.ui.pokemons
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,7 @@ class PokemonsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = TypePokemonsFragmentLayoutBinding.inflate(inflater, container, false)
         val view = binding.root
-
+        Log.d("DANIJEL_POKEMON_F","enter")
 
         return view
     }

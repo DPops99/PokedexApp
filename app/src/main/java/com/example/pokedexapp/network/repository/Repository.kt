@@ -39,4 +39,8 @@ class Repository {
     suspend fun getTypes(value: String):Types{
         return service.getTypes(value)
     }
+
+    suspend fun getMove(value: String):Move{
+        return service.getMove(value)
+    }
 }

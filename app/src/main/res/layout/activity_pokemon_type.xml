@@ -7,14 +7,17 @@
     tools:context=".type.PokemonTypeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/type_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.PokedexApp.AppBarOverlay">
+        android:background="@color/flat_pokemon_type_grass"
+        >
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/surface_1"
             android:gravity="center"
             android:minHeight="?actionBarSize"
             android:padding="@dimen/appbar_padding"
@@ -25,20 +28,14 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary" />
+            android:background="@color/flat_pokemon_type_grass" />
     </com.google.android.material.appbar.AppBarLayout>
-
-
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:nestedScrollingEnabled="true"
-         />
-
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".pokemon.PokemonActivity"
-    android:background="@color/surface_1">
+    android:background="@color/surface_1"
+    android:theme="@style/Theme.PokedexApp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -27,13 +28,15 @@
 
                 <TextView
                     android:id="@+id/pokemon_name"
-                    android:layout_width="328dp"
-                    android:layout_height="38dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="72dp"
                     android:textSize="32sp"
+                    android:textColor="@color/dark"
+                    android:textStyle="bold"
                     />
                 
                 <TextView
@@ -45,6 +48,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/pokemon_num"
+                    android:textColor="@color/cold_gray"
                     android:textSize="10sp"/>
 
                 <TextView
@@ -54,6 +58,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/pokemon_num_text"
                     android:layout_marginStart="16dp"
+                    android:textColor="@color/dark"
+                    android:textStyle="bold"
                     android:textSize="14sp"/>
 
                 <TextView
@@ -64,6 +70,7 @@
                     app:layout_constraintTop_toBottomOf="@id/pokemon_num"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp"
+                    android:textColor="@color/cold_gray"
                     android:text="@string/type"
                     android:textSize="10sp"/>
 
@@ -134,7 +141,9 @@
             android:id="@+id/pokemon_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            android:elevation="0dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -162,7 +171,9 @@
             android:id="@+id/pokemon_ability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            android:elevation="0dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -180,6 +191,7 @@
                 android:layout_marginEnd="32dp"
                 android:textSize="20sp"
                 android:textAlignment="center"
+                android:textColor="@color/dark"
                 android:textStyle="bold"/>
 
             <TextView
@@ -192,7 +204,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
-                android:textAlignment="center"/>
+                android:textColor="@color/dark"
+                android:textAlignment="center"
+                android:textSize="16dp"/>
 
                 <TextView
                     android:id="@+id/ability_two"
@@ -204,7 +218,9 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="24dp"
-                    android:textAlignment="center"/>
+                    android:textColor="@color/dark"
+                    android:textAlignment="center"
+                    android:textSize="16dp"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -215,7 +231,9 @@
                 android:id="@+id/pokem_stats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp"
+                android:elevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -233,7 +251,8 @@
                         android:textSize="20sp"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginTop="8dp"/>
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/dark"/>
 
                     <include
                         android:id="@+id/hp"
@@ -306,14 +325,16 @@
                         android:layout_marginTop="8dp"
                         android:textStyle="bold"
                         android:textSize="24sp"
-                        android:text="@string/evolution"/>
+                        android:text="@string/evolution"
+                        android:textAlignment="center"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/pokemon_rv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginStart="16dp"/>
 
 
 

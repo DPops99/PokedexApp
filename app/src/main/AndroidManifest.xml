@@ -14,7 +14,8 @@
         <activity
             android:name=".type.PokemonTypeActivity"
             android:label="@string/title_activity_pokemon_type"
-            android:theme="@style/Theme.PokedexApp.NoActionBar"></activity>
+            android:parentActivityName=".pokemon.PokemonActivity"
+            ></activity>
         <activity
             android:name=".about.AboutActivity"
             android:parentActivityName=".main.MainActivity" />

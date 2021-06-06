@@ -1,6 +1,7 @@
 package com.example.pokedexapp.type
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -24,27 +25,42 @@ class PokemonTypeActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.damage_overview)))
-        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.moves)))
-        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.pokemons)))
-        binding.tabs.tabGravity = TabLayout.GRAVITY_FILL
 
+//        supportActionBar?.apply {
+//            setDisplayHomeAsUpEnabled(true)
+//            setDisplayShowHomeEnabled(true)
+//        }
+
+//        binding.viewPager.adapter = TabAdapter(applicationContext, supportFragmentManager, 3)
+//        binding.tabs.setupWithViewPager(binding.viewPager)
+
+//        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.damage_overview)))
+//        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.moves)))
+//        binding.tabs.addTab(binding.tabs.newTab().setText(getString(R.string.pokemons)))
+//        binding.tabs.tabGravity = TabLayout.GRAVITY_FILL
+        Log.d("DANIJEL_TABC",binding.tabs.tabCount.toString())
         adapter = TabAdapter(this, supportFragmentManager, binding.tabs.tabCount)
         binding.viewPager.adapter = adapter
-        binding.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabs))
-        binding.tabs.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                binding.viewPager.currentItem = tab?.position!!
-            }
+        binding.tabs.setupWithViewPager(binding.viewPager)
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
 
-            }
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
+//        binding.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabs))
+//        binding.tabs.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                binding.viewPager.currentItem = tab?.position!!
+//                Log.d("DANIJEL_TABS",tab?.position!!.toString())
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {
+//
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab?) {
+//
+//            }
+//
+//        })
 
-            }
-
-        })
     }
 }
